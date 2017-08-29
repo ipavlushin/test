@@ -1,5 +1,5 @@
 ---
-- name: get info after pull 6
+- name: get info after pull 7
   shell: uname -a
   register: info
 
