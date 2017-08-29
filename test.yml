@@ -1,0 +1,19 @@
+---
+- hosts: qlean5
+  tasks:
+    - name: Check infrastructure git version
+      shell: git pull
+      register: git_status
+      delegate_to: 127.0.0.1
+
+    - name: debug
+      debug:
+        msg: "{{ git_status.stdout }}"
+
+    - name: Determine the version of the docker 
+      shell: "docker -v | awk '{print $3}' |sed 's/,//g'"
+      register: docker_version
+
+    - name: echo
+      shell: echo "{{ docker_version.stdout }}"
+      when: docker_version.stdout == '1.12.6'
