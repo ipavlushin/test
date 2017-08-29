@@ -1,8 +1,8 @@
 ---
 - name: get info
   shell: uname -a
-  register: info
+  register: infos
 
 - name: print debug
   debug:
-    msg: "{{ info.stdout }}"
+    msg: "{{ infos.stdout }}"
